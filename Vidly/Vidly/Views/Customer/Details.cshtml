@@ -8,3 +8,7 @@
 <h2>Customer Details</h2>
 
 <p>@Model.Name</p>
+@if (Model.Birthdate.HasValue)
+{
+    <p>Birthdate: @Model.Birthdate</p>
+}
