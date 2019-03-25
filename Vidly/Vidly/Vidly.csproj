@@ -233,15 +233,30 @@
     <Compile Include="Migrations\201903220232565_AddedImportantPropsToMovie.Designer.cs">
       <DependentUpon>201903220232565_AddedImportantPropsToMovie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903241933344_AddedGenreType.cs" />
+    <Compile Include="Migrations\201903241933344_AddedGenreType.Designer.cs">
+      <DependentUpon>201903241933344_AddedGenreType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903241942422_AddedGenreIdToMovie.cs" />
+    <Compile Include="Migrations\201903241942422_AddedGenreIdToMovie.Designer.cs">
+      <DependentUpon>201903241942422_AddedGenreIdToMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903242318171_ChangedRequirementsMovieAndGenre.cs" />
+    <Compile Include="Migrations\201903242318171_ChangedRequirementsMovieAndGenre.Designer.cs">
+      <DependentUpon>201903242318171_ChangedRequirementsMovieAndGenre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\GenreType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CustomerFormViewModel.cs" />
+    <Compile Include="ViewModels\MoviesFormViewModel.cs" />
     <Compile Include="ViewModels\RandomMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -306,6 +321,8 @@
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Movies\Details.cshtml" />
+    <Content Include="Views\Customer\CustomerForm.cshtml" />
+    <Content Include="Views\Movies\MovieForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -362,6 +379,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903220232565_AddedImportantPropsToMovie.resx">
       <DependentUpon>201903220232565_AddedImportantPropsToMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903241933344_AddedGenreType.resx">
+      <DependentUpon>201903241933344_AddedGenreType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903241942422_AddedGenreIdToMovie.resx">
+      <DependentUpon>201903241942422_AddedGenreIdToMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903242318171_ChangedRequirementsMovieAndGenre.resx">
+      <DependentUpon>201903242318171_ChangedRequirementsMovieAndGenre.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
