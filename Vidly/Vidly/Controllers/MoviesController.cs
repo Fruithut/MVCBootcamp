@@ -63,11 +63,9 @@ namespace Vidly.Controllers
 
         public ActionResult New()
         {
-            var genres = _context.GenreTypes.ToList();
-
             var viewModel = new MoviesFormViewModel
             {
-                GenreTypes = genres
+                GenreTypes = _context.GenreTypes.ToList()
             };
             
             return View("MovieForm", viewModel);
@@ -79,9 +77,8 @@ namespace Vidly.Controllers
             
             if (movie == null) return HttpNotFound();
 
-            var viewModel = new MoviesFormViewModel
+            var viewModel = new MoviesFormViewModel(movie)
             {
-                Movie = movie,
                 GenreTypes = _context.GenreTypes.ToList()
             };
 
@@ -89,22 +86,31 @@ namespace Vidly.Controllers
         }
 
         [HttpPost]
-        public ActionResult Save(MoviesFormViewModel alteredModel)
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(Movie movie)
         {
-            var alteredMovie = alteredModel.Movie;
-
-            if (alteredMovie.Id == 0)
+            if (!ModelState.IsValid)
             {
-                alteredMovie.DateAdded = DateTime.Now;
-                _context.Movies.Add(alteredMovie);
+                var viewModel = new MoviesFormViewModel(movie)
+                {
+                    GenreTypes = _context.GenreTypes.ToList()
+                };
+
+                return View("MovieForm", viewModel);
+            }
+
+            if (movie.Id == 0)
+            {
+                movie.DateAdded = DateTime.Now;
+                _context.Movies.Add(movie);
             }
             else
             {
-                var movieInDb = _context.Movies.Single(m => m.Id == alteredMovie.Id);
-                movieInDb.Name = alteredMovie.Name;
-                movieInDb.GenreId = alteredMovie.GenreId;
-                movieInDb.ReleaseDate = alteredMovie.ReleaseDate;
-                movieInDb.Stock = alteredMovie.Stock;
+                var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
+                movieInDb.Name = movie.Name;
+                movieInDb.GenreId = movie.GenreId;
+                movieInDb.ReleaseDate = movie.ReleaseDate;
+                movieInDb.Stock = movie.Stock;
             }
 
             _context.SaveChanges();

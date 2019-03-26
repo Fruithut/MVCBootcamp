@@ -12,5 +12,9 @@ namespace Vidly.Models
         public byte DurationInMonths { get; set; }
         public byte DiscountRate { get; set; }
         public string Name { get; set; }
+
+        // This can be refactored to an enum, but will require a 'code'-memberfield on customer or a cast in validation
+        public static readonly byte Unkown = 0;
+        public static readonly byte PayAsYouGo = 1;
     }
 }
