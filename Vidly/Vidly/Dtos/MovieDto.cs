@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Vidly.Models;
 
-namespace Vidly.Models
-{
-    public class Movie
+namespace Vidly.Dtos
+{   
+    /// <summary>
+    /// Movie Data Transfer Object
+    /// Used to decouple our movie-api from implementation details.
+    /// </summary>
+    public class MovieDto
     {
         public int Id { get; set; }
 
@@ -14,20 +19,13 @@ namespace Vidly.Models
         [StringLength(255)]
         public string Name { get; set; }
 
-        public GenreType Genre { get; set; }
-
         [Required]
-        [Display(Name = "Genre")]
         public byte GenreId { get; set; }
 
         [Required]
-        [Display(Name = "Release Date")]
         public DateTime ReleaseDate { get; set; }
 
-        public DateTime DateAdded { get; set; }
-
         [Range(1, 20)]
-        [Display(Name = "Number in stock")]
         public int Stock { get; set; }
     }
 }
