@@ -26,7 +26,7 @@ namespace Vidly.ViewModels
         [Range(1, 20)]
         [Required]
         [Display(Name = "Number in stock")]
-        public int? Stock { get; set; }
+        public int? NumberInStock { get; set; }
 
         public IEnumerable<GenreType> GenreTypes { get; set; }
 
@@ -42,7 +42,7 @@ namespace Vidly.ViewModels
             Id = movie.Id;
             Name = movie.Name;
             ReleaseDate = movie.ReleaseDate;
-            Stock = movie.Stock;
+            NumberInStock = movie.NumberInStock;
             GenreId = movie.GenreId;
         }
     }

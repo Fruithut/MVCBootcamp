@@ -28,6 +28,6 @@ namespace Vidly.Dtos
         public DateTime ReleaseDate { get; set; }
 
         [Range(1, 20)]
-        public int Stock { get; set; }
+        public int NumberInStock { get; set; }
     }
 }
