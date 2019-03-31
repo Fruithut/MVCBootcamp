@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace Vidly.Controllers
-{
+{   
+    [AllowAnonymous]
     public class HomeController : Controller
     {
-        [AllowAnonymous]
+        /* Caching of action (data in view that is being served)
+
+           enable [OutputCache(Duration = 10, Location = OutputCacheLocation.Server, VaryByParam = "*")]
+           disable [OutputCache(Duration = 0, VaryByParam = "*", NoStore = true)]
+        */
         public ActionResult Index()
         {
             return View();

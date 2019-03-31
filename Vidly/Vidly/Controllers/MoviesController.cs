@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Runtime.Caching;
 using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
@@ -30,6 +31,14 @@ namespace Vidly.Controllers
             {
                 return View("List");
             }
+
+            /* An example of data caching (NB: this is a simple so caching should not be necessary):
+
+               if (MemoryCache.Default["Genres"] == null)
+                   MemoryCache.Default["Genres"] = _context.GenreTypes.ToList();
+            
+               var genres = MemoryCache.Default["Genres"] as IEnumerable<GenreType>;
+            */
 
             return View("ReadOnlyList");
         }
